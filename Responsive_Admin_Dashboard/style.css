@@ -1,3 +1,244 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+
+/* Main Styles */
+:root {    
+    /* :root */
+    /* 是一个伪类，表示文档根元素，使用根选择器还可以帮助开发者更好地组织和管理大型网站的样式表 */
+    /* 在声明全局 CSS 变量时 :root 会很有用 */
+    --color-primary: #6c9bcf;
+    --color-danger: #ff0060;
+    --color-success: #1b9c85;
+    --color-warning: #f7d060;
+    --color-white: #fff;
+    --color-info-dark: #7d8da1;
+    --color-dark: #363949;
+    --color-light: rgba(132, 139, 200, 0.18);
+    --color-dark-variant: #677483;
+    --color-background: #f6f6f9;
+
+    --card-border-radius: 2rem;
+    --border-radius-1: 0.4rem;
+    --border-radius-2: 1.2rem;
+
+    --card-padding: 1.8rem;
+    --padding-1: 1.2rem;
+
+    --box-shadow: 0 2rem 3rem var(--color-light);
+}
+
+.dark-mode-variables {
+    --color-background: #181a1e;
+    --color-white: #202528;
+    --color-dark: #edeffd;
+    --color-dark-variant: #a3bdcc;
+    --color-light: rgba(0, 0, 0, 0.4);
+    --box-shadow: 0 2rem 3rem var(--color-light);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    /* CSS 的 outline 属性是在一条声明中设置多个轮廓属性的简写属性  */
+    appearance: none;
+    /* appearance CSS 属性用于控制 UI 控件的基于操作系统主题的原生外观。 */
+    /* 但 0 是非法值，在以前非标准化和老浏览器上是允许0，现在应该是none，否则会警告无效值 */
+    border: 0;
+    text-decoration: none;
+    /* text-decoration 简写 CSS 属性设置文本上的装饰性线条的外观 */
+    box-sizing: border-box; 
+    /* box-sizing */
+    /* CSS 中的 box-sizing 属性定义了 user agent 应该如何计算一个元素的总宽度和总高度。 */
+    /* https://developer.mozilla.org/zh-CN/docs/Web/CSS/box-sizing */
+}
+
+html {
+    font-size: 14px;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    font-family: "Poppins", sans-serif;
+    font-size: 0.88rem;
+    user-select: none;
+    /* user-select CSS 属性用于控制用户是否可以选择文本 */
+    overflow-x: hidden;
+    color: var(--color-dark);
+    background-color: var(--color-background);
+}
+
+a {
+    color: var(--color-dark);
+}
+
+img {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+    /* object-fit CSS 属性指定可替换元素（例如：<img> 或 <video>）的内容应该如何适应到其使用高度和宽度确定的框。 */
+    /* https://developer.mozilla.org/zh-CN/docs/Web/CSS/object-fit */
+}
+
+h1 {
+    font-weight: 800;
+    font-size: 1.8rem;
+}
+
+h2 {
+    font-weight: 600;
+    font-size: 1.4rem;
+}
+
+h3 {
+    font-weight: 500;
+    font-size: 0.87rem;
+}
+
+small {
+    font-size: 0.76rem;
+}
+
+p {
+    color: var(--color-dark-variant);
+}
+
+b {
+    color: var(--color-dark);
+}
+
+.text-muted {
+    color: var(--color-info-dark);
+}
+
+.primary {
+    color: var(--color-primary);
+}
+
+.danger {
+    color: var(--color-danger);
+}
+
+.success {
+    color: var(--color-success);
+}
+
+.warning {
+    color: var(--color-warning);
+}
+
+/* Container styles */
+.container {
+    display: grid;
+    /* 该元素的行为类似块级元素并且根据网格模型布局它的内容。 */
+    /* 网格布局教程：https://www.ruanyifeng.com/blog/2019/03/grid-layout-tutorial.html */
+    width: 96%;
+    margin: 0 auto;
+    gap: 1.8rem;
+    /* CSS gap 属性是用来设置网格行与列之间的间隙（gutters），该属性是 row-gap 和 column-gap 的简写形式。 */
+    grid-template-columns: 12rem auto 23rem;
+    /* 定义每一列的列宽 */
+}
+
+
+/* Sidebar styles */
+aside{
+    height: 100vh;
+}
+
+aside .toggle{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1.4rem;
+}
+
+aside .toggle .logo{
+    display: flex;
+    gap: 0.5rem;
+}
+
+aside .toggle .logo img{
+    width: 2rem;
+    height: 2rem;
+}
+
+aside .toggle .close{
+    padding-right: 1rem;
+    display: none;
+}
+
+aside .sidebar{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-white);
+    box-shadow: var(--box-shadow);
+    border-radius: 15px;
+    height: 88vh;
+    position: relative;
+    top: 1.5rem;
+    transition: all 0.3s ease; /* 过渡可以为一个元素在不同状态之间切换的时候定义不同的过渡效果 */
+}
+
+aside .sidebar:hover{
+    box-shadow: none;
+}
+
+aside .sidebar a{
+    display: flex;
+    align-items: center;
+    color: var(--color-info-dark);
+    height: 3.7rem;
+    gap: 1rem;
+    position: relative;
+    margin-left: 2rem;
+    transition: all 0.3s ease;
+}
+
+aside .sidebar a span{
+    font-size: 1.6rem;
+    transition: all 0.3s ease;
+}
+
+aside .sidebar a:last-child{
+    position: absolute;
+    bottom: 2rem;
+    width: 100%;
+}
+
+aside .sidebar a.active{
+    width: 100%;
+    color: var(--color-primary);
+    background-color: var(--color-light);
+    margin-left: 0;
+}
+
+aside .sidebar a.active::before{
+    content: '';
+    width: 6px;
+    height: 18px;
+    background-color: var(--color-primary);
+}
+
+aside .sidebar a.active span{
+    color: var(--color-primary);
+    margin-left: calc(1rem - 3px);
+}
+
+aside .sidebar a:hover{
+    color: var(--color-primary);
+}
+
+aside .sidebar a:hover span{
+    margin-left: 0.6rem;
+}
+
+aside .sidebar .message-count{
+    background-color: var(--color-danger);
+    padding: 2px 6px;
+    color: var(--color-white);
+    font-size: 11px;
+    border-radius: var(--border-radius-1);
+}
 
 
